@@ -1,0 +1,3 @@
+[submodule "apeiron-logger"]
+	path = apeiron-logger
+	url = git@github.com:Luh-code/apeiron-logger.git
