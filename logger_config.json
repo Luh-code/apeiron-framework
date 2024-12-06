@@ -90,6 +90,6 @@
 		"level": true,
 		"file": true
 	},
-	"verbosity": 2,
+	"verbosity": 1,
 	"fileVerbosity": 0
 }

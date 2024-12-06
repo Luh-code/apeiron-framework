@@ -13,7 +13,7 @@ fn getSrc() std.builtin.SourceLocation {
 pub fn main() void {
     const allocator = std.heap.page_allocator;
     const fileName = log.generate_log_file_name(allocator, "./logs") catch |err| {
-        std.debug.print("{}", .{err});
+        std.debug.print("12234{}", .{err});
         return;
     };
     _ = fileName;
