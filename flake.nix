@@ -1,5 +1,5 @@
 {
-  description = "A simple Nix flake to compile a Zig program";
+  description = "The nix flake to compile apeiron-framework";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -14,8 +14,8 @@
       {
         packages = {
           apeiron-core = pkgs.stdenv.mkDerivation {
-            pname = "apeiron";
-            version = "0.1.0";
+            pname = "apeiron-framework";
+            version = "0.0.1";
 
             src = ./.;
 
