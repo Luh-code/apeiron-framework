@@ -1,0 +1,10 @@
+.{
+    .name = "apeiron-framework",
+    .version = "0.0.1",
+    .dependencies = .{
+        .apeiron_logger = .{
+            .path = "apeiron-logger",
+        },
+    },
+    .paths = .{""},
+}
