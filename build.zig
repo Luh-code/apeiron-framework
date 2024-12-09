@@ -2,7 +2,27 @@ const std = @import("std");
 const apeiron_logger = @import("apeiron_logger");
 //const apeiron_logger_build = @import("./apeiron-logger/build.zig");
 
+pub const Dependency = struct { name: []const u8, path: []const u8 };
+
+var deps: ?std.ArrayList(*Dependency) = null;
+
+// add a dependency to the dependencies
+pub fn addDependency(b: *std.Build, dep: *Dependency) void {
+    if (!deps) {
+        deps = std.ArrayList(*Dependency).init(b.allocator);
+    }
+    deps.?.append(dep);
+}
+
+// make a package out of the deps
+//pub fn makePackage(b: *std.Build, module: *std.Build.Module) void {
+//    for (deps) |value| {
+//        module.addImport(value.name, value.path);
+//    }
+//}
+
 pub fn build(b: *std.Build) void {
+    deps = std.ArrayList(*Dependency).init(b.allocator);
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
