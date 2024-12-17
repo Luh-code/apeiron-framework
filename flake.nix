@@ -54,7 +54,7 @@
           };
         };
 
-        defaultPackage = self.packages.${system}.apeiron-core;
+        defaultPackage = self.packages.${system}.apeiron-framework;
       });
 }
 

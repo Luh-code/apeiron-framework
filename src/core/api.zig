@@ -1,24 +1,10 @@
-pub const Version = struct {
-    major: u16,
-    minor: u16,
-    patch: u16,
-
-    /// create a new Version struct
-    pub fn new(major: u16, minor: u16, patch: u16) Version {
-        return Version{ .major = major, .minor = minor, .patch = patch };
+fn getFuncType(impl: anytype, func: []const u8) type {
+    if (!@hasDecl(impl, func)) {
+        @compileError("Implementation '" ++ @typeName(impl) ++ "' does not provide requested function '" ++ func ++ "'");
     }
+    return @TypeOf(@field(impl, func));
+}
 
-    /// Check if the version of a plugin is compatible with what's specified
-    ///
-    ///
-    /// Here is a legend on the meaning of the versions in correspondance to API compatility:
-    ///
-    /// major version - shows the overall version of the API,
-    ///  so any difference in major version is treated as breaking and will return false.
-    /// minor version - is only allowed to be larger than the specified version,
-    ///  as the minor version denotes only additions to the API, not breaking changes.
-    /// patch version - is irrelevant for API compatility, as it only denotes internal changes.
-    pub fn isCompatible(self: Version, other: Version) bool {
-        return self.major == other.major and self.minor <= other.minor;
-    }
-};
+pub fn getFunc(impl: anytype, func: []const u8) getFuncType(impl, func) {
+    return @field(impl, func);
+}
