@@ -21,4 +21,8 @@ pub const Version = struct {
     pub fn isCompatible(self: Version, other: Version) bool {
         return self.major == other.major and self.minor <= other.minor;
     }
+
+    pub fn toString(self: *Version) []const u8 {
+        return "" ++ self.major ++ "." ++ self.minor ++ "." ++ self.patch;
+    }
 };
